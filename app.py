@@ -74,44 +74,44 @@ def main():
     st.pyplot(fig200)
 
 
-    data_training = pd.DataFrame(df['Close'][0:int(len(df)*0.70)])
-    data_testing = pd.DataFrame(df['Close'][int(len(df)*0.70):int(len(df))])
+    # data_training = pd.DataFrame(df['Close'][0:int(len(df)*0.70)])
+    # data_testing = pd.DataFrame(df['Close'][int(len(df)*0.70):int(len(df))])
 
 
-    from sklearn.preprocessing import MinMaxScaler
-    scaler=MinMaxScaler(feature_range=(0,1))
-    data_training_array = scaler.fit_transform(data_training)
+    # from sklearn.preprocessing import MinMaxScaler
+    # scaler=MinMaxScaler(feature_range=(0,1))
+    # data_training_array = scaler.fit_transform(data_training)
 
 
 
-    model=load_model('stockmodel.h5')
-    past_100_days = data_training.tail(100)
-    final_df = past_100_days.append(data_testing,ignore_index=True)
-    input_data = scaler.fit_transform(final_df)
-    x_test=[]
-    y_test=[]
-    predictions=[]
-    for i in range(100,input_data.shape[0]):
-        predictions.append(input_data[i-100:i])
-        x_test.append(input_data[i-100:i])
-        y_test.append(input_data[i,0])
+    # model=load_model('stockmodel.h5')
+    # past_100_days = data_training.tail(100)
+    # final_df = past_100_days.append(data_testing,ignore_index=True)
+    # input_data = scaler.fit_transform(final_df)
+    # x_test=[]
+    # y_test=[]
+    # predictions=[]
+    # for i in range(100,input_data.shape[0]):
+    #     predictions.append(input_data[i-100:i])
+    #     x_test.append(input_data[i-100:i])
+    #     y_test.append(input_data[i,0])
         
-    x_test,y_test=np.array(x_test),np.array(y_test)
-    y_predicted=model.predict(x_test)
-    scaler=scaler.scale_
-    scale_factor=1/scaler[0]
+    # x_test,y_test=np.array(x_test),np.array(y_test)
+    # y_predicted=model.predict(x_test)
+    # scaler=scaler.scale_
+    # scale_factor=1/scaler[0]
 
-    y_predicted=y_predicted*scale_factor
-    y_test=y_test*scale_factor
+    # y_predicted=y_predicted*scale_factor
+    # y_test=y_test*scale_factor
 
-    st.subheader('Prediction vs. original')
-    figp=plt.figure(figsize=(20,15))
-    plt.plot(y_test,'b',label='Original Price')
-    plt.plot(y_predicted,'r',label='Predition')
-    plt.xlabel('Time')
-    plt.ylabel('Price')
-    plt.legend()
-    st.pyplot(figp)
+    # st.subheader('Prediction vs. original')
+    # figp=plt.figure(figsize=(20,15))
+    # plt.plot(y_test,'b',label='Original Price')
+    # plt.plot(y_predicted,'r',label='Predition')
+    # plt.xlabel('Time')
+    # plt.ylabel('Price')
+    # plt.legend()
+    # st.pyplot(figp)
 
 
 
