@@ -17,7 +17,7 @@ translate-toolkit==3.3.2
 Twisted==20.3.0
 typing-extensions==4.1.1
 tzdata==2021.5
-tzlocal==4.1']
+tzlocal==4.1
 keras==2.8.0
 matplotlib==3.5.1
 numpy==1.22.3
