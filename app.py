@@ -38,7 +38,7 @@ def get_bollinger_bands(prices, rate=20):
 def main():
     st.title('Ticker')
 
-    start = st.date_input('Start date','2019-01-18')
+    start = st.date_input('Start date',datetime.date(2019, 7, 6))
     end = st.date_input('End date')
     ticker = st.text_input('Enter Ticker','AAPL')
 
